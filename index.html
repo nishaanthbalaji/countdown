@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="countdown" />
+    <title>Document</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+      font-family: "Roboto", sans-serif;
+    }
+    body {
+      height: 100vh;
+    }
+    section {
+      padding-left: 100px;
+      padding-top: 50px;
+      display: flex;
+    }
+    .content {
+      height: 500px;
+      width: 500px;
+      /* background-color: aqua; */
+      margin-left: 50px;
+      padding-top: 40px;
+      padding-left: 10px;
+    }
+    .count {
+      display: flex;
+      margin-top: 50px;
+      color: white;
+      font-size: 20px;
+      font-weight: bolder;
+    }
+    .one {
+      height: 100px;
+      width: 100px;
+      background-color: darkblue;
+      margin: 10px;
+      padding-top: 10px;
+      padding-left: 10px;
+    }
+    .day,
+    .minute,
+    .second,
+    .hour {
+      font-size: 50px;
+    }
+  </style>
+  <body>
+    <section>
+      <div class="image">
+        <img
+          src="./pexels-alex-tinca-12741170.jpg"
+          alt="img1"
+          height="500px"
+          width="500px"
+        />
+      </div>
+      <div class="content">
+        <h2 style="font-weight: bolder; color: blue">
+          OLD <span style="color: red">PHONE</span> GIVEAWAY
+        </h2>
+        <p style="margin-top: 10px; margin-bottom: 40px">
+          Give away ends on sunday ,30 july 2023 12.00pm
+        </p>
+        <p style="color: blue; opacity: 0.7">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis at
+          deserunt voluptatibus harum natus animi eius error assumenda quisquam
+          aut maxime odit veniam laboriosam est, reiciendis corporis architecto
+          aperiam vero deleniti non! Iste at tenetur minima doloremque omnis
+          pariatur magni sed, impedit in dicta ut sunt minus culpa nemo
+          voluptatibus.
+        </p>
+        <div class="count">
+          <div class="one">
+            <p class="day">00</p>
+            <span>Days</span>
+          </div>
+          <div class="one">
+            <p class="hour">00</p>
+            <span>Hours</span>
+          </div>
+          <div class="one">
+            <p class="minute">00</p>
+            <span>Minutes</span>
+          </div>
+          <div class="one">
+            <p class="second" style="color: red">00</p>
+            <span>Seconds</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script>
+      function countdown() {
+        let countdownDate = new Date("30 july ,2023 00:00:00").getTime();
+        let now = new Date().getTime();
+
+        console.log(countdownDate);
+        let remainingTime = countdownDate - now;
+
+        // workout the time in days hours mins seconds
+        let second = 1000;
+        let minute = second * 60;
+        let hour = minute * 60;
+        let day = hour * 24;
+
+        let textDay = Math.floor(remainingTime / day);
+        let textHour = Math.floor((remainingTime % day) / hour);
+        let textMinute = Math.floor((remainingTime % hour) / minute);
+        let textSecond = Math.floor((remainingTime % minute) / second);
+
+        let a = document.querySelector(".day");
+        let b = document.querySelector(".hour");
+        let c = document.querySelector(".minute");
+        let d = document.querySelector(".second");
+
+        a.textContent = textDay;
+        b.textContent = textHour;
+        c.textContent = textMinute;
+        d.textContent = textSecond;
+      }
+      setInterval(countdown, 1000);
+    </script>
+  </body>
+</html>
